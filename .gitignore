@@ -1,5 +1,5 @@
 /vendor
 .idea
 .history
-
+.DS_STORE
 config/private_config.yml

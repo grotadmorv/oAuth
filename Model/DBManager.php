@@ -60,6 +60,7 @@ class DBManager
             $query .= ':'.$k;
         }
         $query .= ')';
+        var_dump($data);
         $sth = $dbh->prepare($query);
         $sth->execute($data);
         return true;
@@ -127,5 +128,10 @@ class DBManager
 		$query = 'DELETE FROM `'.$table.'` WHERE `'.$table.'`.`id` = '.$id.';';
 		$sth = $dbh->prepare($query);
 		$sth->execute();
-	}
+    }
+
+    function getAllTokens(){
+        $data = $this->findAllSecure("SELECT value FROM token");
+        return $data;
+    }
 }

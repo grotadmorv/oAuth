@@ -30,8 +30,10 @@ class DefaultController
 
     public function formAction()
     {
-        $token = $this->DBManager->findAllSecure('token');
-
+        $token = $this->DBManager->getAllTokens();
+        // var_dump($_GET["auth_token"]);
+        // var_dump(array_values($token));
+        // var_dump(in_array($_GET["auth_token"], $token));
         if((in_array($_GET["auth_token"], $token))) {
             require('Web/views/auth_form.php');
         } else {
@@ -44,9 +46,10 @@ class DefaultController
         $bytes = random_bytes(255);
         $token = bin2hex($bytes);
 
+				$this->DBManager->insert('token', array('user_id' => NULL, 'type' => 'auth', 'value' => $token));
+
         $res = array('auth_token'=>$token, 'form_url'=>"https://sup-auth.herokuapp.com/?action=form&auth_token=$token");
         //TODO insert token into DB
-        echo json_encode($res);
         return json_encode($res);
     }
 
