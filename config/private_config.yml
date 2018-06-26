@@ -1,5 +1,5 @@
 db_config:
-    name: 'heroku_200a175865ee6aa'
+    name: 'heroku_32ccb203cd115b4'
     host: 'eu-cdbr-west-02.cleardb.net'
-    user: 'ba4bd0830a5c4b'
-    pass: '05d4b86a599a07b'
+    user: 'b18fe43520f8eb'
+    pass: '35e319f7'
