@@ -30,7 +30,9 @@ class DefaultController
 
     public function formAction()
     {
-        if($_GET["auth_token"]) {
+        $token = $this->DBManager->findAllSecure('token');
+
+        if((in_array($_GET["auth_token"], $token))) {
             require('Web/views/auth_form.php');
         } else {
             echo "token required";
@@ -44,6 +46,7 @@ class DefaultController
 
         $res = array('auth_token'=>$token, 'form_url'=>"https://sup-auth.herokuapp.com/?action=form&auth_token=$token");
         //TODO insert token into DB
+        echo json_encode($res);
         return json_encode($res);
     }
 
