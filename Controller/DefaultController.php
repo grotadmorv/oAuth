@@ -37,8 +37,10 @@ class DefaultController
         $bytes = random_bytes(255);
         $token = bin2hex($bytes);
 
+				$this->DBManager->insert('token', array('user_id' => NULL, 'type' => 'auth', 'value' => $token));
+
         $res = array('auth_token'=>$token, 'form_url'=>"https://sup-auth.herokuapp.com/?action=form&auth_token=$token");
-        //TODO insert token into DB
+
         return json_encode($res);
     }
 
