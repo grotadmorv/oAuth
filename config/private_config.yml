@@ -2,4 +2,4 @@ db_config:
     name: 'oauth'
     host: 'us-cdbr-east.cleardb.com'
     user: 'ba4bd0830a5c4b'
-    pass: '4f7cb0cf '
+    pass: '4f7cb0cf'
