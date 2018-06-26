@@ -45,7 +45,11 @@ class DefaultController
         $res = array('auth_token'=>$token, 'form_url'=>"https://sup-auth.herokuapp.com/?action=form&auth_token=$token");
         //TODO insert token into DB
 
-        var_dump("prod", $res);
+        // var_dump("prod", $res);
+
+        // var_dump("JSON", json_encode($res));
+
+        echo "https://sup-auth.herokuapp.com/?action=form&auth_token=$token";
 
         return json_encode($res);
     }
