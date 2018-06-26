@@ -53,4 +53,22 @@ class DefaultController
         return json_encode($res);
     }
 
+    public function confirmFormAction()
+    {
+        $auth_token = $this->DBManager->getWhatHow($_POST['auth_token'], 'value', 'token');
+        if(isset($_POST['auth_token']) && $_POST['auth_token'] == $auth_token[0]['value'] ){ 
+            if(!empty($_POST['email'] && $_POST['password'])){
+                $user = $this->DBManager->getWhatHow($_POST['email'], 'email', 'user');
+                if($user){
+                    $bytes = random_bytes(255);
+                    $token = bin2hex($bytes);
+                    $this->DBManager->insert('token', array('user_id' => $user[0]['id'], 'type' => 'confirm', 'value' => $token));
+                    $this -> DBManager -> dbSuppress("token", $auth_token[0]['id']);
+                }else{
+                    echo "no";
+                }
+            }
+        }
+    }
+
 }
