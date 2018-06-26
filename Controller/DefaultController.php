@@ -26,12 +26,15 @@ class DefaultController
         echo "Vous êtes nuls =) Zoubi Nathou";
     }
 
-    function  authTokenAction() {
+    public function authTokenAction() {
+        
         $bytes = random_bytes(255);
         $token = bin2hex($bytes);
-
+    
         $res = array('auth_token'=>$token);
         //TODO insert token into DB
+        
         return json_encode($res);
     }
+    
 }
