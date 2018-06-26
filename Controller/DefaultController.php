@@ -38,7 +38,7 @@ class DefaultController
 
     }
 
-    public function  authTokenAction() {
+    public function authTokenAction() {
         $bytes = random_bytes(255);
         $token = bin2hex($bytes);
 
