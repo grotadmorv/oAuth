@@ -4,9 +4,3 @@ routes:
     authToken: 'Default:authToken'
 
 defaut_route: 'form'
-
-db_config:
-    name: 'oauth'
-    host: 'localhost'
-    user: 'root'
-    pass: 'c3a0c78911f8103490c80655'
