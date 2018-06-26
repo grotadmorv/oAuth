@@ -3,7 +3,7 @@
 <head>
 <title>Login fb</title>
 
-<link href="../../web/assets/css/auth_form_css.css" rel="stylesheet" type="text/css"  />
+<link href="Web/assets/css/auth_form_css.css" rel="stylesheet" type="text/css"  />
 </head>
 
 <body>
