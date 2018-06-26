@@ -60,7 +60,6 @@ class DBManager
             $query .= ':'.$k;
         }
         $query .= ')';
-        var_dump($data);
         $sth = $dbh->prepare($query);
         $sth->execute($data);
         return true;
