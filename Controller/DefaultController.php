@@ -9,4 +9,9 @@ class DefaultController
         echo "TEST";
     }
 
+    public function formAction()
+    {
+        echo "toto";
+    }
+
 }

@@ -1,7 +1,8 @@
 routes:
     home: 'Default:home'
+    form: 'Default:form'
 
-defaut_route: 'home'
+defaut_route: 'form'
 
 db_config:
     name: 'oauth'
