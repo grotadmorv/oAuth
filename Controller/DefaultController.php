@@ -30,7 +30,12 @@ class DefaultController
 
     public function formAction()
     {
-        require('Web/views/auth_form.php');
+        if($_GET["auth_token"]) {
+            require('Web/views/auth_form.php');
+        } else {
+            echo "token required";
+        }
+
     }
 
     public function  authTokenAction() {
