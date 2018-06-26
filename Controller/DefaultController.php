@@ -49,9 +49,7 @@ class DefaultController
 
         // var_dump("JSON", json_encode($res));
 
-        echo "https://sup-auth.herokuapp.com/?action=form&auth_token=$token";
-
-        return json_encode($res);
+        echo json_encode($res);
     }
 
 }
