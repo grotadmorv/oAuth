@@ -4,4 +4,4 @@ routes:
     authToken: 'Default:authToken'
     dbTest : 'Default:dbTest'
 
-defaut_route: 'form'
+defaut_route: 'home'
