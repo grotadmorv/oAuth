@@ -1,0 +1,9 @@
+routes:
+
+defaut_route: '/home'
+
+db_config:
+    name: 'oauth'
+    host: 'localhost'
+    user: 'root'
+    pass: ''
