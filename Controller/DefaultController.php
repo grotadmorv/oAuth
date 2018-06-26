@@ -20,10 +20,12 @@ class DefaultController
 
 	public function homeAction()
     {
-    	// $user = $this->DBManager->getWhatHow(1, 'id', 'user');
-        //var_dump($user);
-
         echo "Vous êtes nuls =) Zoubi Nathou";
+    }
+
+    function dbTestAction() {
+        $user = $this->DBManager->getWhatHow(1, 'id', 'user');
+        var_dump($user);
     }
 
     public function formAction()
