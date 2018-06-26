@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 26 juin 2018 à 08:30
+-- Généré le :  mar. 26 juin 2018 à 10:16
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -30,9 +30,11 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `token`;
 CREATE TABLE IF NOT EXISTS `token` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `type` varchar(255) NOT NULL,
-  `value` varchar(255) NOT NULL
+  `value` longtext NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
