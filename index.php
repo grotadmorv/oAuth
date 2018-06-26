@@ -8,6 +8,7 @@ session_start();
 require __DIR__ . '/vendor/autoload.php';
 
 $config = Yaml::parse(file_get_contents('config/config.yml'));
+$private_config = Yaml::parse(file_get_contents('config/private_config.yml'));
 
 $router = new Router($config['routes']);
 if (!empty($_GET['action']))

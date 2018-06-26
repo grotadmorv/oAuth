@@ -2,11 +2,26 @@
 
 namespace Controller;
 
+use Model\DBManager;
+
 class DefaultController
 {
-    public function homeAction()
+	private $DBManager;
+
+	/**
+	 * DefaultController constructor.
+	 *
+	 * @param $DBManager
+	 */
+	public function __construct() {
+		$this->DBManager = DBManager::getInstance();
+	}
+
+
+	public function homeAction()
     {
-        echo "TEST";
+    	$user = $this->DBManager->getWhatHow(1, 'id', 'user');
+        //var_dump($user);
     }
 
     function  authTokenAction() {

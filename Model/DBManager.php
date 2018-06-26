@@ -24,8 +24,8 @@ class DBManager
 
     private function connectToDb()
     {
-        global $config;
-        $db_config = $config['db_config'];
+        global $private_config;
+        $db_config = $private_config['db_config'];
         $dsn = 'mysql:dbname='.$db_config['name'].';host='.$db_config['host'];
         $user = $db_config['user'];
         $password = $db_config['pass'];
@@ -98,4 +98,34 @@ class DBManager
         $result = $sth->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+	function getWhatHow($needle, $needleColumn, $needleTable){
+		$data = $this->findAllSecure('SELECT * FROM `'.$needleTable.'` WHERE `'.$needleColumn.'` = :needle',
+			['needle' => $needle]);
+		return $data;
+	}
+	function dbUpdate($table, $id, $fieldToUpdateData){
+		$dbh = $this->getDbh();
+		$first = true;
+		$query = 'UPDATE `' . $table . '` SET ';
+		foreach ($fieldToUpdateData AS $key => $value){
+			if (!$first){
+				$query .= ', ';
+			}else{
+				$first = false;
+			}
+			$query .= '`'.$key.'` =:'.$key;
+		}
+		$query .= ' WHERE `'.$table.'`.`id` = '.$id;
+		/*echo $query;
+		var_dump($fieldToUpdateData);*/
+		$sth = $dbh->prepare($query);
+		$sth->execute($fieldToUpdateData);
+	}
+	function dbSuppress($table, $id){
+		$dbh = $this->getDbh();
+		$query = 'DELETE FROM `'.$table.'` WHERE `'.$table.'`.`id` = '.$id.';';
+		$sth = $dbh->prepare($query);
+		$sth->execute();
+	}
 }

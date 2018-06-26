@@ -1,3 +1,5 @@
 /vendor
 .idea
 .history
+
+config/private_config.yml
