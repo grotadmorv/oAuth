@@ -1,5 +1,6 @@
 routes:
     home: 'Default:home'
+    authToken: 'Default:authToken'
 
 defaut_route: 'home'
 
