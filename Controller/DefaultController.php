@@ -26,7 +26,12 @@ class DefaultController
         echo "Vous êtes nuls =) Zoubi Nathou";
     }
 
-    function  authTokenAction() {
+    function dbTestAction() {
+        $user = $this->DBManager->getWhatHow(1, 'id', 'user');
+        var_dump($user);
+    }
+
+    function authTokenAction() {
         $bytes = random_bytes(255);
         $token = bin2hex($bytes);
 

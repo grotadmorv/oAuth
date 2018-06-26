@@ -1,5 +1,6 @@
 routes:
     home: 'Default:home'
     authToken: 'Default:authToken'
+    dbTest : 'Default:dbTest'
 
 defaut_route: 'home'
