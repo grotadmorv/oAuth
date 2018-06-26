@@ -20,7 +20,7 @@ class DefaultController
 
 	public function homeAction()
     {
-    	$user = $this->DBManager->getWhatHow(1, 'id', 'user');
+    	// $user = $this->DBManager->getWhatHow(1, 'id', 'user');
         //var_dump($user);
 
         echo "Vous êtes nuls =) Zoubi Nathou";
