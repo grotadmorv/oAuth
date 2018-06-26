@@ -1,5 +1,5 @@
 db_config:
-    name: 'oauth'
+    name: 'heroku_200a175865ee6aa'
     host: 'eu-cdbr-west-02.cleardb.net'
     user: 'ba4bd0830a5c4b'
     pass: '05d4b86a599a07b'
