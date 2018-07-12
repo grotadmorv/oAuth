@@ -93,7 +93,8 @@ class DefaultController
         $token = bin2hex($bytes);
         $tokens = $this->DBManager->getWhatHow($confirmToken,'value', 'token');
         if (count($tokens) == 0) {
-            die("toto")
+            echo "Allez";
+            die;
             return json_encode(array(
                 'status' => 'error',
             ));
