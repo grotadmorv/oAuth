@@ -34,8 +34,8 @@ class DefaultController
         // var_dump($_GET["auth_token"]);
         // var_dump(array_values($token));
         // var_dump(in_array($_GET["auth_token"], $token));
-        // if((in_array($_GET["auth_token"], $token))) {
-        if($_GET["auth_token"]) {
+        if((in_array($_GET["auth_token"], $token))) {
+        // if($_GET["auth_token"]) {
             require('Web/views/auth_form.php');
         } else {
             echo "token required";
@@ -47,7 +47,7 @@ class DefaultController
         $bytes = random_bytes(255);
         $token = bin2hex($bytes);
 
-        $this->DBManager->insert('token', array('user_id' => NULL, 'type' => 'auth', 'value' => $token));
+        $this->DBManager->insert('token', array('user_id' => NULL, 'type' => 'auth', 'value' => $token, 'callback_url' => $_POST['url']));
 
         $res = array('auth_token'=>$token, 'form_url'=>"https://sup-auth.herokuapp.com/?action=form&auth_token=$token");
 
@@ -66,6 +66,8 @@ class DefaultController
                     $token = bin2hex($bytes);
                     $this->DBManager->insert('token', array('user_id' => $user[0]['id'], 'type' => 'confirm', 'value' => $token));
                     $this -> DBManager -> dbSuppress("token", $auth_token[0]['id']);
+
+                    header('Location:' . $_POST['url']);
                 }else{
                     echo "no";
                 }
