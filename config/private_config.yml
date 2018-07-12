@@ -1,5 +1,5 @@
 db_config:
     name: 'oauth'
-    host: 'dev.spault.cloud'
+    host: 'dev.spault.cloud:3306'
     user: 'oauth'
     pass: 'prout'
