@@ -98,9 +98,7 @@ class DefaultController
             ));
         }
         $res = array('access_token'=>$token);
-        var_dump("tatan");
-        var_dump($res);
-        return json_encode($res);
+        return "tatan";
     }
 
     public function secretTokenAction() {
