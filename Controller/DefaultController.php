@@ -67,7 +67,7 @@ class DefaultController
                     $this->DBManager->insert('token', array('user_id' => $user[0]['id'], 'type' => 'confirm', 'value' => $token));
                     $this -> DBManager -> dbSuppress("token", $auth_token[0]['id']);
 
-                    header('Location:' . $_POST['url']);
+                    header('Location:' . $auth_token[0]['callback_url']);
                 }else{
                     echo "no";
                 }
