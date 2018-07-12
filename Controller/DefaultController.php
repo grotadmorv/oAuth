@@ -88,11 +88,7 @@ class DefaultController
     }
 
     public function accessTokenAction() {
-
-        echo json_encode($_POST);
-        return;
-
-        $confirmToken = $_GET['confirm_token'];
+        $confirmToken = $_POST['confirm_token'];
         $bytes = random_bytes(255);
         $token = bin2hex($bytes);
         $tokens = $this->DBManager->getWhatHow($confirmToken, 'value', 'token');
@@ -112,7 +108,7 @@ class DefaultController
     }
 
     public function secretTokenAction() {
-        $accessToken = $_GET['access_token'];
+        $accessToken = $_POST['access_token'];
         $tokens = $this->DBManager->getWhatHow($accessToken,'value', 'token');
 
         if (count($tokens) == 0 || $tokens[0]['type'] != 'access') {
