@@ -88,38 +88,43 @@ class DefaultController
     }
 
     public function accessTokenAction() {
-        $confirmToken = $_GET['confirm_token'];
+        $confirmToken = $_POST['confirm_token'];
         $bytes = random_bytes(255);
         $token = bin2hex($bytes);
         $tokens = $this->DBManager->getWhatHow($confirmToken,'value', 'token');
-        if (count($tokens) == 0) {
-            return json_encode(array(
+        if (count($tokens) == 0 || $tokens[0]['type'] != 'confirm') {
+            echo json_encode(array(
                 'status' => 'error',
             ));
+            return;
         }
         $res = array('access_token'=>$token);
+
+        $this->DBManager->insert('token', array('user_id' => $user[0]['id'], 'type' => 'access', 'value' => $token, 'callback_url' => null));
+        $this -> DBManager -> dbSuppress("token", $tokens[0]['id']);
+
         echo json_encode($res);
-        die;
-        return json_encode($res);
     }
 
     public function secretTokenAction() {
         $accessToken = $_POST['access_token'];
         $tokens = $this->DBManager->getWhatHow($accessToken,'value', 'token');
 
-        if (count($tokens) == 0) {
-            return json_encode(array(
+        if (count($tokens) == 0 || $tokens[0]['type'] != 'access') {
+            echo json_encode(array(
                 'status' => 'error',
             ));
+            return;
         }
         $user = $this->DBManager->getWhatHow($tokens[0]['user_id'], 'id', 'user');
         if (count($user) == 0) {
-            return json_encode(array(
+            echo json_encode(array(
                 'status' => 'error',
             ));
+            return;
         }
         $res = array('secret_token'=>$user[0]["secret"]);
 
-        return json_encode($res);
+        echo json_encode($res);
     }
 }
