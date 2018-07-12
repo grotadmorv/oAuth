@@ -31,12 +31,17 @@ class DefaultController
 
     public function formAction()
     {
-        $token = $this->DBManager->getAllTokens();
-        // var_dump($_GET["auth_token"]);
-        // var_dump(array_values($token));
-        // var_dump(in_array($_GET["auth_token"], $token));
-        // if((in_array($_GET["auth_token"], $token))) {
-        if($_GET["auth_token"]) {
+        $tokens = $this->DBManager->getAllTokens();
+
+        $token = null;
+        foreach($tokens as $tokenArray) {
+            if ($tokenArray['value'] == $_GET["auth_token"]) {
+                $token = true;
+                break;
+            }
+        }
+
+        if($token) {
             require('Web/views/auth_form.php');
         } else {
             echo "token required";
@@ -62,6 +67,12 @@ class DefaultController
             if(!empty($_POST['email'] && $_POST['password'])){
                 $user = $this->DBManager->getWhatHow($_POST['email'], 'email', 'user');
                 //todo check password is ok
+
+                if (!password_verify($_POST['password'], $user[0]['password'])) {
+                    echo "Wrong password";
+                    exit();
+                }
+
                 if($user){
                     $bytes = random_bytes(255);
                     $token = bin2hex($bytes);
