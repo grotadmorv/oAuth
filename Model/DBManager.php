@@ -64,8 +64,6 @@ class DBManager
             $sth = $dbh->prepare($query);
             $sth->execute($data);
         }catch (Exception $e){
-            var_dump($e);
-            die;
         }
 
         return true;

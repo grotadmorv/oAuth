@@ -76,7 +76,7 @@ class DefaultController
                 if($user){
                     $bytes = random_bytes(255);
                     $token = bin2hex($bytes);
-                    $this->DBManager->insert('token', array('user_id' => $user[0]['id'], 'type' => 'confirm', 'value' => $token));
+                    $this->DBManager->insert('token', array('user_id' => $user[0]['id'], 'type' => 'confirm', 'value' => $token, 'callback_url' => null));
                     $this -> DBManager -> dbSuppress("token", $auth_token[0]['id']);
 
                     header ('Location: '. $auth_token[0]['callback_url'] . '&confirm_token='. $token);
