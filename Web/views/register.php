@@ -1,5 +1,6 @@
 <form name="signUp" method="POST" action="?action=userCreation">
 	<fieldset>
+
 		<label for="email">email : </label>
 		<input type="email" name="email" id="email" placeholder="xyz@example.com"><br>
 
