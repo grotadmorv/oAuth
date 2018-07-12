@@ -95,7 +95,7 @@ class DefaultController
         if (count($tokens) == 0 || $tokens[0]['type'] != 'confirm') {
             echo json_encode(array(
                 'status' => 'error',
-                'tokenCount'   => count($tokens)
+                'tokenPassed'   => $confirmToken
             ));
             return;
         }
