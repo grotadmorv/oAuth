@@ -88,6 +88,10 @@ class DefaultController
     }
 
     public function accessTokenAction() {
+
+        echo json_encode($_POST);
+        return;
+
         $confirmToken = $_GET['confirm_token'];
         $bytes = random_bytes(255);
         $token = bin2hex($bytes);
