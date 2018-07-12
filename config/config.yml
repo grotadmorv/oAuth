@@ -3,6 +3,7 @@ routes:
     form: 'Default:form'
     authToken: 'Default:authToken'
     dbTest : 'Default:dbTest'
+    confirmForm: 'Default:confirmForm'
     userCreation: 'User:register'
 
 defaut_route: 'home'
