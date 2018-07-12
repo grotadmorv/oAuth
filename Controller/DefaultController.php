@@ -97,7 +97,7 @@ class DefaultController
                 'status' => 'error',
             ));
         }
-        echo $tokens;
+        echo $token;
         die;
         $res = array('access_token'=>$token);
         return json_encode($res);
