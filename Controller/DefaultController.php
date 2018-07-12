@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Model\DBManager;
+use GuzzleHttp\Guzzle;
 
 class DefaultController
 {
@@ -67,7 +68,11 @@ class DefaultController
                     $this->DBManager->insert('token', array('user_id' => $user[0]['id'], 'type' => 'confirm', 'value' => $token));
                     $this -> DBManager -> dbSuppress("token", $auth_token[0]['id']);
 
-                    header('Location:' . $auth_token[0]['callback_url']);
+                    $response = $client->request('POST', $auth_token[0]['callback_url'], [
+                        'form_params' => [
+                            'confirm_token' => $token,
+                        ]
+                    ]);
                 }else{
                     echo "no";
                 }
