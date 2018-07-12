@@ -13,5 +13,5 @@ If the login and the password are ok, then send the form, erase the auth_token a
 __Fourth step: GET confirm_token__
 Wait for the confirm_token, then generate and return the access_token
 
-__Fifth step: GET access_token__
-Wait for the request of access_token, then return the allowed access request 
+__Fifth step: GET secret__
+Wait for the request of access_token, then return the allowed access request (secret link user)
