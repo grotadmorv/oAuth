@@ -6,5 +6,6 @@ routes:
     confirmForm: 'Default:confirmForm'
     accessToken: 'Default:accessToken'
     userCreation: 'User:register'
+    secretToken: 'Default:secretToken'
 
 defaut_route: 'form'
