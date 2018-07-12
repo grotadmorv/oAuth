@@ -95,13 +95,13 @@ class DefaultController
         if (count($tokens) == 0 || $tokens[0]['type'] != 'confirm') {
             echo json_encode(array(
                 'status' => 'error',
-                'type'   => $tokens[0]['type']
+                'token'   => $tokens[0]
             ));
             return;
         }
         $res = array('access_token'=>$token);
 
-        $this->DBManager->insert('token', array('user_id' => $user[0]['id'], 'type' => 'access', 'value' => $token, 'callback_url' => null));
+        $this->DBManager->insert('token', array('user_id' => $tokens[0]['user_id'], 'type' => 'access', 'value' => $token, 'callback_url' => null));
         $this -> DBManager -> dbSuppress("token", $tokens[0]['id']);
 
         echo json_encode($res);
