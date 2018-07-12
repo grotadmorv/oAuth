@@ -88,8 +88,6 @@ class DefaultController
     }
 
     public function accessTokenAction() {
-        echo "toto";
-        die;
         $confirmToken = $_GET['confirm_token'];
         $bytes = random_bytes(255);
         $token = bin2hex($bytes);
@@ -99,6 +97,8 @@ class DefaultController
                 'status' => 'error',
             ));
         }
+        echo $tokens;
+        die;
         $res = array('access_token'=>$token);
         return json_encode($res);
     }
