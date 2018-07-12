@@ -72,4 +72,18 @@ class DefaultController
         }
     }
 
+    public function accessTokenAction() {
+        $confirmToken = $_GET['confirm_token'];
+        $bytes = random_bytes(255);
+        $token = bin2hex($bytes);
+        $tokens = $this->DBManager->getWhatHow($confirmToken,'value', 'token');
+        if (count($tokens) == 0) {
+            return json_encode(array(
+                'status' => 'error',
+            ));
+        }
+        $res = array('access_token'=>$token);
+        return json_encode($res);
+    }
+
 }
