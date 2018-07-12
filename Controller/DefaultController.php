@@ -59,6 +59,7 @@ class DefaultController
         if(isset($_POST['auth_token']) && $_POST['auth_token'] == $auth_token[0]['value'] ){ 
             if(!empty($_POST['email'] && $_POST['password'])){
                 $user = $this->DBManager->getWhatHow($_POST['email'], 'email', 'user');
+                //todo check password is ok
                 if($user){
                     $bytes = random_bytes(255);
                     $token = bin2hex($bytes);
