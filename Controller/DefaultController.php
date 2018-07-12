@@ -81,7 +81,7 @@ class DefaultController
     }
 
     public function accessTokenAction() {
-        $confirmToken = $_GET['confirm_token'];
+        $confirmToken = $_POST['confirm_token'];
         $bytes = random_bytes(255);
         $token = bin2hex($bytes);
         $tokens = $this->DBManager->getWhatHow($confirmToken,'value', 'token');
