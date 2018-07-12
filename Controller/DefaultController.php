@@ -34,8 +34,8 @@ class DefaultController
         // var_dump($_GET["auth_token"]);
         // var_dump(array_values($token));
         // var_dump(in_array($_GET["auth_token"], $token));
-        if((in_array($_GET["auth_token"], $token))) {
-        // if($_GET["auth_token"]) {
+        // if((in_array($_GET["auth_token"], $token))) {
+        if($_GET["auth_token"]) {
             require('Web/views/auth_form.php');
         } else {
             echo "token required";
