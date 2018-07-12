@@ -91,10 +91,11 @@ class DefaultController
         $confirmToken = $_POST['confirm_token'];
         $bytes = random_bytes(255);
         $token = bin2hex($bytes);
-        $tokens = $this->DBManager->getWhatHow($confirmToken,'value', 'token');
+        $tokens = $this->DBManager->getWhatHow($confirmToken, 'value', 'token');
         if (count($tokens) == 0 || $tokens[0]['type'] != 'confirm') {
             echo json_encode(array(
                 'status' => 'error',
+                'type'   => $tokens[0]['type']
             ));
             return;
         }
