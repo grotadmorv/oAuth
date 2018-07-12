@@ -88,7 +88,7 @@ class DefaultController
     }
 
     public function accessTokenAction() {
-        $confirmToken = $_POST['confirm_token'];
+        $confirmToken = $_GET['confirm_token'];
         $bytes = random_bytes(255);
         $token = bin2hex($bytes);
         $tokens = $this->DBManager->getWhatHow($confirmToken,'value', 'token');
@@ -98,7 +98,7 @@ class DefaultController
             ));
         }
         $res = array('access_token'=>$token);
-        return "tatan";
+        return json_encode($res);
     }
 
     public function secretTokenAction() {
