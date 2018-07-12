@@ -105,4 +105,23 @@ class DefaultController
         return json_encode($res);
     }
 
+    public function secretTokenAction() {
+        $accessToken = $_POST['access_token'];
+        $tokens = $this->DBManager->getWhatHow($accessToken,'value', 'token');
+
+        if (count($tokens) == 0) {
+            return json_encode(array(
+                'status' => 'error',
+            ));
+        }
+        $user = $this->DBManager->getWhatHow($tokens[0]['user_id'], 'id', 'user');
+        if (count($user) == 0) {
+            return json_encode(array(
+                'status' => 'error',
+            ));
+        }
+        $res = array('secret_token'=>$user[0]["secret"]);
+
+        return json_encode($res);
+    }
 }
